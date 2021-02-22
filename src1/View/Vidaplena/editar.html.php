@@ -50,11 +50,15 @@
                                                 <td>'.$productos['inv'].'</td>
                                                
 
-                                             <td><div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                                            <label class="form-check-label" for="defaultCheck1">
-                                                              </label>
-                                                    </div></td>         
+                                             <td>
+                                             
+                                                <input class="form-control" type="number" style="width : 50px; heigth : 1px" name="cantvend" id="cantvend" value="'.$productos['cantsol'].'" max="20">
+
+                                             
+                                             
+                                             
+                                             
+                                             </td>         
                                                 
                                              </tr>';
                                     }
