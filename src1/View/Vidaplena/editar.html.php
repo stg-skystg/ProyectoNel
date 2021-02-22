@@ -50,15 +50,13 @@
                                                 <td>'.$productos['inv'].'</td>
                                                
 
-                                             <td>
-                                             
-                                                <input class="form-control" type="number" style="width : 50px; heigth : 1px" name="cantvend" id="cantvend" value="'.$productos['cantsol'].'" max="20">
+                                            <td> 
+                                       
+                                            <input class="form-control" type="number" style="width : 50px; heigth : 1px" name="cantvend" id="cantvend"  value="'.$productos['cantsol'].'"         max="'.$productos['cantsol'].'" >
 
-                                             
-                                             
-                                             
-                                             
-                                             </td>         
+
+
+                                                </td>       
                                                 
                                              </tr>';
                                     }
