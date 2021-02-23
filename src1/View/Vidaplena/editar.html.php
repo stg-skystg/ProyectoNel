@@ -18,9 +18,15 @@
                                     <form role="form" name="idpedido" method="post" action="<?php echo getUrl("Vidaplena","vidaplena","listar"); ?>">
                                         <div class="form-group">
 
-                                            <label>ID VIDA PLENA1:</label>
+
+
+                                            <label>ID VIDA PLENA:</label>
                                             <label><?php foreach($producto as $productos){} echo $productos['idpedido']; ?></label>
                                                <br><br>
+
+                                                <div class="form-group">
+                                            
+                                        </div>
 
                                             <table class="table table-striped table-bordered" width="500px">
                                               <thead>
@@ -31,9 +37,10 @@
                                                   <th scope="col">Talla</th>
                                                   <th scope="col">Ubicación</th>
                                                   <th scope="col">CantSolicitada</th>
+                                                  <th scope="col">CantDespachada</th>
                                                   <th scope="col">Inventario</th>
                                                   
-                                                  <th scope="col">Check</th>
+                                                  
                                                 </tr>
                                               </thead>
                                               <tbody>
@@ -47,18 +54,21 @@
                                                 <td>'.$productos['talla'].'</td>
                                                 <td>'.$productos['ubica'].'</td>
                                                 <td>'.$productos['cantsol'].'</td>
+
+                                                <td> 
+                                       
+                                            <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="cantvend" id="cantvend"  value="'.$productos['cantsol'].'"         max="'.$productos['cantsol'].'" min="0">
+
+
+
+                                                </td>
+                                             
                                                 <td>'.$productos['inv'].'</td>
                                                
-
-                                            <td> 
-                                       
-                                            <input class="form-control" type="number" style="width : 50px; heigth : 1px" name="cantvend" id="cantvend"  value="'.$productos['cantsol'].'"         max="'.$productos['cantsol'].'" >
-
-
-
-                                                </td>       
-                                                
+                                         
+                                             
                                              </tr>';
+
                                     }
                                 ?>
                                     
@@ -82,6 +92,12 @@
                                    
                         </td>'
               ?>
+
+
+              
+                
+
+
 
              
                                 </div>
