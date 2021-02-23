@@ -31,6 +31,8 @@
                                             <table class="table table-striped table-bordered" width="500px">
                                               <thead>
                                                 <tr>
+
+
                                                   <th scope="col">Codigo</th>
                                                   <th scope="col">Producto</th>
                                                   <th scope="col">Color</th>
@@ -48,6 +50,7 @@
                                                   <?php
                                                       foreach ($producto as $productos){                                
                                                    echo '<tr class="gradeA odd" role="row" style="text-align: center;">
+                                               
                                                 <td>'.$productos['referenc'].'</td>
                                                 <td>'.$productos['nompro'].'</td>
                                                 <td>'.$productos['color'].'</td>
@@ -57,7 +60,7 @@
 
                                                 <td> 
                                        
-                                            <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="cantvend" id="cantvend"  value="'.$productos['cantsol'].'"         max="'.$productos['cantsol'].'" min="0">
+                                            <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="cantsol" id="cantsol"  value="'.$productos['cantsol'].'"         max="'.$productos['cantsol'].'" min="0">
 
 
 
@@ -94,7 +97,12 @@
               ?>
 
 
-              
+              <?php                            
+                      echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=despachar2&cantsol='.$productos['cantsol'].'"><button class="btn btn-success"><i class="fa fa fa-check">&nbsp;Despachar</i></button></a>
+                                   
+                        </td>'
+              ?>
+
                 
 
 
