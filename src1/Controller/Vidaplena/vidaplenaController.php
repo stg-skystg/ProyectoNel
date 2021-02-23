@@ -120,6 +120,20 @@ class vidaplenaController{
             redirect(getUrl("Vidaplena","vidaplena","listar"));
         }
         
+	
+	 function despachar2(){
+            
+
+            $cantvendi=$_GET['cantsol'];
+            $sqlinv="update vidaplena set cantvend='$cantvendi'";
+            
+            $objUsu= new vidaplenaModel();
+            $producto = $objUsu->Actualizar($sqlinv);
+            $objUsu->closeConect();
+            //redirect(getUrl("Vidaplena","vidaplena","listar"));
+        }
+	
+	
         function getEditar(){
             $producto=$_GET['idpedido'];
             $sql="select * from vidaplena where idpedido=$producto";
