@@ -172,42 +172,23 @@ class vidaplenaController{
         }
        
         
-        function postEditar(){ $idpr=$_POST['idp']; 
-        $sql="select * from
-        vidaplena where idpedido=$producto";
+         function postEditar(){
 
-            //@$nitpr=$_POST['nitp'];
-            $nombrepr=$_POST['nombrep'];
-            $passpr=$_POST['pass'];
-            $telpr=$_POST['telp'];
-            $dirpr=$_POST['dirp']; 
-            $correopr=$_POST['correop'];
-            $correopro=$_POST['correoprov'];
-            $correoprov=$_POST['correopri'];
-            //$serviciopr=$_POST['servicio'];
-            //$formap=$_POST['forma'];
-            $ciudad=$_POST['ciudad'];
-            $distrito=$_POST['dist_id'];
-            //$paispr=$_POST['pais_id'];
-            //$estadop=$_POST['estado'];
-            //$usuario=$_POST['usuario'];
-            //$descripcionp=$_POST['descripcionp'];
-            $telpru=$_POST['telp_uno'];
-            $telprd=$_POST['telp_dos'];
-            $telprt=$_POST['telp_tres'];
-            $banco=$_POST['banco_nom'];
-            $tipo=$_POST['tipo_cue'];
-            $n_cuen=$_POST['num_cuenta'];
-
+            $proyec=$_POST['idpedido'];
+            $cantsoli=$_POST['cantsol'];
+            $d=2;
             
+          
+
+          
                  
-                 
-            $sql="update proveedor set nombre='$nombrepr', pass='$passpr', telefono='$telpr', telefono_dos='$telpru', telefono_tres='$telprd', telefono_cua='$telprt', direccion='$dirpr', correo='$correopr', correo_provee='$correopro', corr_p='$correoprov', CiudadNombre='$ciudad', nombreDistrito='$distrito', banco='$banco', tipo_cuenta='$tipo', n_cuenta='$n_cuen'"
-                    . "where idp_proveedor='$idpr' ";
+            $sql="update vidaplena set id_estado='$d', cantvend='$cantsoli' where idpedido='$proyec'";
             $objUsu= new vidaplenaModel();
             $producto=$objUsu->Actualizar($sql);
+           
             $objUsu->closeConect();
-            redirect(getUrl("Proveedor","proveedor","listar"));
+
+            //redirect(getUrl("Vidaplena","vidaplena","listar"));
         }
           
 
