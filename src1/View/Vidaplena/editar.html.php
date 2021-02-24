@@ -15,18 +15,15 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form role="form" name="idpedido" method="post" action="<?php echo getUrl("Vidaplena","vidaplena","listar"); ?>">
+                                    <form role="form" name="idpedido" method="post" action="<?php echo getUrl("Vidaplena","vidaplena","despachar"); ?>">
                                         <div class="form-group">
 
 
 
-                                            <label>ID VIDA PLENA:</label>
-                                            <label><?php foreach($producto as $productos){} echo $productos['idpedido']; ?></label>
-                                               <br><br>
+                                            <label>ID VIDA PLENA:<?php foreach($producto as $productos){}?></label>
+                                            <input name="Cod_Pedido" id="Cod_Pedido" value="<?php echo $productos['idpedido'];?>"></input>
 
-                                                <div class="form-group">
-                                            
-                                        </div>
+                                                
 
                                             <table class="table table-striped table-bordered" width="500px">
                                               <thead>
@@ -47,32 +44,30 @@
                                               </thead>
                                               <tbody>
                                                 <tr>
-                                                  <?php
-                                                      foreach ($producto as $productos){                                
-                                                   echo '<tr class="gradeA odd" role="row" style="text-align: center;">
-                                               
-                                                <td>'.$productos['referenc'].'</td>
-                                                <td>'.$productos['nompro'].'</td>
-                                                <td>'.$productos['color'].'</td>
-                                                <td>'.$productos['talla'].'</td>
-                                                <td>'.$productos['ubica'].'</td>
-                                                <td>'.$productos['cantsol'].'</td>
+                                                <?php
+                                                $i =0;
+                                                foreach ($producto as $productos){
+                                                    //$i = $i + 1;
+                                                    echo '<tr class="gradeA odd" role="row" style="text-align: center;">
 
-                                                <td> 
-                                       
-                                            <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="cantsol" id="cantsol"  value="'.$productos['cantsol'].'"         max="'.$productos['cantsol'].'" min="0">
+                                                    <td>'.$productos['referenc'].'</td>
+                                                    <td>'.$productos['nompro'].'</td>
+                                                    <td>'.$productos['color'].'</td>
+                                                    <td>'.$productos['talla'].'</td>
+                                                    <td>'.$productos['ubica'].'</td>
+                                                    <td>'.$productos['cantsol'].'</td>
 
+                                                    <td> 
 
+                                                    <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="selectinput[]" id="selectinput[]" value="'.$productos['cantsol'].'"  max="'.$productos['cantsol'].'" min="0">
 
-                                                </td>
-                                             
-                                                <td>'.$productos['inv'].'</td>
-                                               
-                                         
-                                             
-                                             </tr>';
+                                                    </td>
 
-                                    }
+                                                    <td>'.$productos['inv'].'</td>
+
+                                                    </tr>';
+
+                                                }
                                 ?>
                                     
 
@@ -83,24 +78,28 @@
                         </table>
                                             
                   </div>
-                 <button class="btn btn-danger"><i class="fa  fa-times"></i>&nbsp;
-                Cancelar<a href="<?php echo getUrl("Vidaplena","vidaplena","listar"); ?>"></a></button>
-                                    
+                 
+                       
+                <?php
+              
+                    echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=despachar&idpedido='.$productos['idpedido'].'"><button class="btn btn-success"><i class="fa fa fa-check">&nbsp;Despachar</i></button></a>        
+                    </td>';
+ 
+                ?>
+                                        
+                
               </form>
-              <br>
               
 
-              <?php                            
-                      echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=despachar&idpedido='.$productos['idpedido'].'"><button class="btn btn-success"><i class="fa fa fa-check">&nbsp;Despachar</i></button></a>
-                                   
-                        </td>'
-              ?>
 
-
-              <?php                            
-                      echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=despachar2&cantsol='.$productos['cantsol'].'"><button class="btn btn-success"><i class="fa fa fa-check">&nbsp;Despachar</i></button></a>
-                                   
-                        </td>'
+              <?php    
+                    
+            
+                    echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=despachar2&cantsol='.$productos['cantsol'].'"><button class="btn btn-success"><i class="fa fa fa-check">&nbsp;Despachar2</i></button></a>
+                    </td>';
+                              
+                    echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=listar"><button class="btn btn-danger"><i class="fa  fa-times">&nbsp;Cancelar</i></button></a>
+                    </td>'
               ?>
 
                 

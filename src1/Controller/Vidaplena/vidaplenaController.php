@@ -111,13 +111,24 @@ class vidaplenaController{
 
 
          function despachar(){
-            $proyec=$_GET['idpedido'];
+            $proyec=$_POST['Cod_Pedido'];
+            echo "<script>alert('prueba ya $proyec');</script>";
+            
+            
+            //$test[] = $_POST['selectinput'];
             $d=2;
-            $sql="update vidaplena set id_estado='$d' where idpedido='$proyec'";
-            $objUsu= new vidaplenaModel();
-            $producto=$objUsu->Actualizar($sql);
-            $objUsu->closeConect();
-            redirect(getUrl("Vidaplena","vidaplena","listar"));
+            
+            foreach ($_POST['selectinput'] as $test) {
+                echo "<script>alert('Usuario ya $test');</script>";
+            }
+            
+            
+            
+            //$sql="update vidaplena set id_estado='$d' where idpedido='$proyec'";
+            //$objUsu= new vidaplenaModel();
+            //$producto=$objUsu->Actualizar($sql);
+            //$objUsu->closeConect();
+            //redirect(getUrl("Vidaplena","vidaplena","listar"));
         }
         
 	
