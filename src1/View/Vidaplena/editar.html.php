@@ -1,35 +1,47 @@
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Comprobar Vida Plena&nbsp<i class="fa  fa-table fa-fw"></i></h1>
+                    <h1 class="page-header">Comprobar Vida Plena&nbsp</h1>
                 </div>
-               
+                <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
                <div class="panel panel-default">
                         <div class="panel-heading">
-                             Vida Plena 2021
+                            VP2021
                         </div>
-
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form role="form" name="idpedido" method="post" action="<?php echo getUrl("Vidaplena","vidaplena","despachar"); ?>">
+                                    <form role="form" name="frm_fac" method="post" action="<?php echo getUrl("Vidaplena","vidaplena","postEditar"); ?>">
                                         <div class="form-group">
 
+<?php foreach ($producto as $productos) {
+  echo $productos['9'];
+}
+
+                                          $productos['idpedido'];
+
+                                          ?>
+                                            <label>ID VIDA PLENA:</label>
 
 
-                                            <label>ID VIDA PLENA:<?php foreach($producto as $productos){}?></label>
-                                            <input name="Cod_Pedido" id="Cod_Pedido" value="<?php echo $productos['idpedido'];?>"></input>
 
-                                                
 
-                                            <table class="table table-striped table-bordered" width="500px">
+                                        <label><?php foreach ($producto as $productos){} echo $productos['idpedido']; ?></label>
+
+                                        <input class="form-control" name="idpedido" type="hidden" value="<?php echo $productos['idpedido']; ?>">
+
+                                        <input class="form-control" name="cantsol" type="hidden" value="<?php echo $productos['cantsol']; ?>"> 
+                                        
+                                            
+                                       
+                                       
+                                     
+                                       <table class="table table-striped table-bordered" width="500px">
                                               <thead>
                                                 <tr>
-
-
                                                   <th scope="col">Codigo</th>
                                                   <th scope="col">Producto</th>
                                                   <th scope="col">Color</th>
@@ -44,69 +56,50 @@
                                               </thead>
                                               <tbody>
                                                 <tr>
-                                                <?php
-                                                $i =0;
-                                                foreach ($producto as $productos){
-                                                    //$i = $i + 1;
-                                                    echo '<tr class="gradeA odd" role="row" style="text-align: center;">
+                                                  <?php
+                                                      foreach ($producto as $productos){                                
+                                                   echo '<tr class="gradeA odd" role="row" style="text-align: center;">
+                                                <td>'.$productos['referenc'].'</td>
+                                                <td>'.$productos['nompro'].'</td>
+                                                <td>'.$productos['color'].'</td>
+                                                <td>'.$productos['talla'].'</td>
+                                                <td>'.$productos['ubica'].'</td>
+                                                <td>'.$productos['cantsol'].'</td>
 
-                                                    <td>'.$productos['referenc'].'</td>
-                                                    <td>'.$productos['nompro'].'</td>
-                                                    <td>'.$productos['color'].'</td>
-                                                    <td>'.$productos['talla'].'</td>
-                                                    <td>'.$productos['ubica'].'</td>
-                                                    <td>'.$productos['cantsol'].'</td>
+                                                <td> 
+                                       
+                                            <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="cantvend" id="cantvend"  value="'.$productos['9'].'"  max="'.$productos['cantsol'].'" min="0">
 
-                                                    <td> 
 
-                                                    <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="selectinput[]" id="selectinput[]" value="'.$productos['cantsol'].'"  max="'.$productos['cantsol'].'" min="0">
 
-                                                    </td>
+                                                </td>
+                                             
+                                                <td>'.$productos['inv'].'</td>
+                                               
+                                         
+                                             
+                                             </tr>';
 
-                                                    <td>'.$productos['inv'].'</td>
-
-                                                    </tr>';
-
-                                                }
+                                    }
                                 ?>
                                     
 
                                             
-
+ 
                                                 
                               </tbody>
                         </table>
-                                            
-                  </div>
-                 
-                       
-                <?php
-              
-                    echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=despachar&idpedido='.$productos['idpedido'].'"><button class="btn btn-success"><i class="fa fa fa-check">&nbsp;Despachar</i></button></a>        
-                    </td>';
- 
-                ?>
+                                       
+                      </div>                  
+                                       
+                                       
+                                        </div></div>
                                         
-                
-              </form>
-              
-
-
-              <?php    
-                    
-            
-                    echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=despachar2&cantsol='.$productos['cantsol'].'"><button class="btn btn-success"><i class="fa fa fa-check">&nbsp;Despachar2</i></button></a>
-                    </td>';
-                              
-                    echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=listar"><button class="btn btn-danger"><i class="fa  fa-times">&nbsp;Cancelar</i></button></a>
-                    </td>'
-              ?>
-
-                
-
-
-
-             
+                                        
+                                        <button type="submit" class="btn btn-success">Enviar</button>
+                                        <button class="btn btn-danger">Cancelar<a href="<?php echo 
+                                        getUrl("inventario","inventario","listar"); ?>"></a></button>
+                                    </form>
                                 </div>
                             </div>
                             <!-- /.row (nested) -->
