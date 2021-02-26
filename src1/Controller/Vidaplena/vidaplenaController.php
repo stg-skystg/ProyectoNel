@@ -4,86 +4,51 @@ include_once('../../Model/Vidaplena/vidaplenaModel.php');
 
 class vidaplenaController{
 	
-	function crear(){	
-                $objUsu= new vidaplenaModel();	
-                $objvidaplena= new vidaplenaModel();
-                $objDist= new vidaplenaModel();
-                
-                $objvidaplena->closeConect();
-                $objDist->closeConect();
-               
-                $objUsu->closeConect();
-               
-                include_once('../../View/Vidaplena/crear.html.php');
-	}
-
- 
-
 	
-	function postCrear()
-        {           
-            
+    	function listar(){
+    		
+            $sql="select distinct idpedido,idlote,nombregere,cedulagere,id_estado,fecha from vidaplena where id_estado=1";
+
+        
+            $idpedido='$idpedido';
+
+            $total="SELECT SUM(cantsol) as total from vidaplena where idpedido='$idpedido'";
+
            
-            @$idpr=$_POST['idp'];
-            //$serviciopr=$_POST['servicio'];
-            //$formap=$_POST['forma'];
-            
-            $codigov=$_POST['codigov'];
-            $nombrev=$_POST['nombrev'];
-            $cantidadv=$_POST['cantidadv'];
-            $fechav=$_POST['fechav'];
+
+
+
+        
 
             
 
+          
 
+    		$objUsu= new vidaplenaModel();
+    		$producto=$objUsu->consultar($sql);
 
-              //alert($idpr);         
-           
-                
-               $sql="insert into proveedor(codigov, nombrev, cantidadv, fechav)  values ('$codigov', '$nombrev', '$cantidadv', '$fechav')";
+    		$objUsu->closeConect();
+    		include_once('../../View/Vidaplena/listar.html.php');
+    	}
 
+        function listarIn(){
+            
+            $sql="select distinct idpedido,idlote,nombregere,cedulagere,id_estado,fecha from vidaplena where id_estado=2";
             $objUsu= new vidaplenaModel();
-           
-            $producto=$objUsu->Insertar($sql);
-           
-            //$producto=$objUsu->Insertar($sql1);
+            $producto=$objUsu->consultar($sql);
             $objUsu->closeConect();
-            redirect(getUrl("Proveedor","proveedor","crear"));  
-           
+            include_once('../../View/vidaplena/listarIn.html.php');
+        }
 
+        function listarinv(){
             
-            //include_once('../../view/Cliente/crearcon.html.php');          
-
-	}
- 
-	
-	function listar(){
-		
-        $sql="select distinct idpedido,idlote,nombregere,cedulagere,id_estado,fecha from vidaplena where id_estado=1";
-		$objUsu= new vidaplenaModel();
-		$producto=$objUsu->consultar($sql);
-		$objUsu->closeConect();
-		include_once('../../View/Vidaplena/listar.html.php');
-	}
-
-    function listarIn(){
-        
-        $sql="select distinct idpedido,idlote,nombregere,cedulagere,id_estado,fecha from vidaplena where id_estado=2";
-        $objUsu= new vidaplenaModel();
-        $producto=$objUsu->consultar($sql);
-        $objUsu->closeConect();
-        include_once('../../View/vidaplena/listarIn.html.php');
-    }
-
-    function listarinv(){
-        
-        $sql="select * from vidaplena";
-        $objUsu= new vidaplenaModel();
-        $producto=$objUsu->consultar($sql);
-        $objUsu->closeConect();
-        include_once('../../View/vidaplena/listarinv.html.php');
-    }
-        
+            $sql="select * from vidaplena";
+            $objUsu= new vidaplenaModel();
+            $producto=$objUsu->consultar($sql);
+            $objUsu->closeConect();
+            include_once('../../View/vidaplena/listarinv.html.php');
+        }
+            
        
         
         function getEliminar(){
@@ -96,8 +61,6 @@ class vidaplenaController{
             include_once('../../View/Vidaplena/eliminar.html.php');
         } 
 
-        
-       
         
         function postEliminar(){
             $proyec=$_GET['idpedido'];
@@ -114,8 +77,6 @@ class vidaplenaController{
             $proyec=$_POST['Cod_Pedido'];
             echo "<script>alert('prueba ya $proyec');</script>";
             
-            
-            //$test[] = $_POST['selectinput'];
             $d=2;
             
             foreach ($_POST['selectinput'] as $test) {
@@ -123,28 +84,8 @@ class vidaplenaController{
             }
             
             
-            
-            //$sql="update vidaplena set id_estado='$d' where idpedido='$proyec'";
-            //$objUsu= new vidaplenaModel();
-            //$producto=$objUsu->Actualizar($sql);
-            //$objUsu->closeConect();
-            //redirect(getUrl("Vidaplena","vidaplena","listar"));
         }
         
-	
-	 function despachar2(){
-            
-
-            $cantvendi=$_GET['cantsol'];
-            $sqlinv="update vidaplena set cantvend='$cantvendi'";
-            
-            $objUsu= new vidaplenaModel();
-            $producto = $objUsu->Actualizar($sqlinv);
-            $objUsu->closeConect();
-            //redirect(getUrl("Vidaplena","vidaplena","listar"));
-        }
-	
-	
         function getEditar(){
             $producto=$_GET['idpedido'];
             $sql="select * from vidaplena where idpedido=$producto";
@@ -172,23 +113,49 @@ class vidaplenaController{
         }
        
         
-         function postEditar(){
+        function postEditar(){
 
-            $proyec=$_POST['idpedido'];
-            $cantsoli=$_POST['cantsol'];
-            $d=2;
+
+            $proyec=$_POST['Cod_Pedido'];
             
-          
+            
+            //$test[] = $_POST['selectinput'];
+            $d=2;
+            $a=0;
+            
 
-          
-                 
-            $sql="update vidaplena set id_estado='$d', cantvend='$cantsoli' where idpedido='$proyec'";
+            foreach ($_POST['selectinput'] as $test) {
+
+                    $a=$a+1;
+                    $b=0;
+
+                foreach ($_POST['select'] as $test2) {
+
+                    $b=$b+1;
+                    if ($a==$b ) {
+
+
+                    
+                $sql="update vidaplena set cantvend = '$test', id_estado='2'
+                where contador = '$test2'"; 
+
+
+
             $objUsu= new vidaplenaModel();
             $producto=$objUsu->Actualizar($sql);
-           
             $objUsu->closeConect();
 
-            //redirect(getUrl("Vidaplena","vidaplena","listar"));
+                            
+                    }
+            }
+
+            }
+
+            
+          
+                 
+          
+            redirect(getUrl("Vidaplena","vidaplena","listar"));
         }
           
 
