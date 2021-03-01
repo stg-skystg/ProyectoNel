@@ -6,7 +6,7 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-     <a href="<?php echo getUrl("Vidaplena","vidaplena","listarIn"); ?>"><button class="btn btn-success">Vida Plena despachada</button></a>
+     <a href="<?php echo getUrl("Vidaplena","vidaplena","listarIn"); ?>"><button class="btn btn-primary">Vida Plena despachada</button></a>
      <br>
      <br>
      <br>
@@ -21,8 +21,8 @@
                             <table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info">
                                 <thead>
                                     <tr role="row">
-                                        <th  rowspan="1" colspan="1" >ID Pedido</th>
-                                        <th  rowspan="1" colspan="1" >ID lote</th>
+                                        <th  rowspan="1" colspan="1" >Pedido</th>
+                                        <th  rowspan="1" colspan="1" >Cantidad Pedidos</th>
                                         <th  rowspan="1" colspan="1" >Nombre Gerente</th>
                                         <th  rowspan="1" colspan="1">Cedúla Gerente</th>
                                         <th  rowspan="1" colspan="1" >Fecha</th>
@@ -37,10 +37,15 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                    foreach ($producto as $productos){                                
+                                    foreach ($producto as $productos){  
+
+                                                    
                                         echo '<tr class="gradeA odd" role="row" style="text-align: center;">
                                                 <td>'.$productos['idpedido'].'</td>
-                                                <td>'.$productos['idlote'].'</td>
+                                                <td>
+                                                    '.$productos['cantsol'].' 
+                                                    
+                                                </td>
                                                 <td>'.$productos['nombregere'].'</td>
                                                 <td>'.$productos['cedulagere'].'</td>
                                                 <td>'.$productos['fecha'].'</td>
