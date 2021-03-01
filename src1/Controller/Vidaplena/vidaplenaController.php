@@ -7,29 +7,30 @@ class vidaplenaController{
 	
     	function listar(){
     		
-            $sql="select distinct idpedido,idlote,nombregere,cedulagere,id_estado,fecha from vidaplena where id_estado=1";
 
-        
-            $idpedido='$idpedido';
-
-            $total="SELECT SUM(cantsol) as total from vidaplena where idpedido='$idpedido'";
-
-           
+          $sql="select idpedido,cantsol,nombregere,cedulagere,id_estado,fecha from vidaplena  where id_estado=1 group by idpedido";
 
 
 
-        
+            $sql2="SELECT SUM(cantsol) from vidaplena where id_estado='1'";
 
+
+            //$sql2="SELECT SUM(cantsol) from vidaplena where idpedido='$idpedido'";
+            echo "<script>alert('Usuario ya $sql2');</script>";
             
-
-          
-
     		$objUsu= new vidaplenaModel();
-    		$producto=$objUsu->consultar($sql);
+            $objcant= new vidaplenaModel();
 
+    		$producto=$objUsu->consultar($sql);
+            $consul=$objcant->consultar($sql2);
+      
     		$objUsu->closeConect();
+            $objcant->closeConect();
+
     		include_once('../../View/Vidaplena/listar.html.php');
     	}
+
+
 
         function listarIn(){
             
@@ -73,18 +74,6 @@ class vidaplenaController{
         }
 
 
-         function despachar(){
-            $proyec=$_POST['Cod_Pedido'];
-            echo "<script>alert('prueba ya $proyec');</script>";
-            
-            $d=2;
-            
-            foreach ($_POST['selectinput'] as $test) {
-                echo "<script>alert('Usuario ya $test');</script>";
-            }
-            
-            
-        }
         
         function getEditar(){
             $producto=$_GET['idpedido'];
@@ -115,11 +104,6 @@ class vidaplenaController{
         
         function postEditar(){
 
-
-            $proyec=$_POST['Cod_Pedido'];
-            
-            
-            //$test[] = $_POST['selectinput'];
             $d=2;
             $a=0;
             
