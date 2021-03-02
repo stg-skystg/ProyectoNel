@@ -8,24 +8,25 @@ class vidaplenaController{
     	function listar(){
     		
 
+
           $sql="select idpedido,SUM(cantsol),nombregere,cedulagere,id_estado,fecha from vidaplena where id_estado=1 group by idpedido";
 
 
 
-            $sql2="SELECT SUM(cantsol) from vidaplena where id_estado='1'";
+           // $sql2="SELECT SUM(cantsol) from vidaplena where idpedido='$idpedido'";
 
 
             //$sql2="SELECT SUM(cantsol) from vidaplena where idpedido='$idpedido'";
-            echo "<script>alert('Usuario ya $sql2');</script>";
+            //echo "<script>alert('Usuario ya $sql2');</script>";
             
     		$objUsu= new vidaplenaModel();
             $objcant= new vidaplenaModel();
 
     		$producto=$objUsu->consultar($sql);
-            $consul=$objcant->consultar($sql2);
+
       
     		$objUsu->closeConect();
-            $objcant->closeConect();
+        
 
     		include_once('../../View/Vidaplena/listar.html.php');
     	}
@@ -42,14 +43,28 @@ class vidaplenaController{
         }
 
         function listarinv(){
-            
-            $sql="select * from vidaplena";
+                
+            $sql="select referenc,SUM(cantvend),nompro,inv from vidaplena where id_estado='2' group by referenc";
             $objUsu= new vidaplenaModel();
             $producto=$objUsu->consultar($sql);
             $objUsu->closeConect();
             include_once('../../View/vidaplena/listarinv.html.php');
         }
+        
+        function listardash(){
             
+
+          $sql="select idpedido,count(cantsol) from vidaplena where id_estado=1";
+            
+            $objUsu= new vidaplenaModel();
+            $producto=$objUsu->consultar($sql);
+
+            $objUsu->closeConect();
+        
+
+            include_once('../../View/partials/dashboard.php');
+        }
+
        
         
         function getEliminar(){
