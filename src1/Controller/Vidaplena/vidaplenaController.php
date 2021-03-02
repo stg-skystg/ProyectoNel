@@ -8,7 +8,7 @@ class vidaplenaController{
     	function listar(){
     		
 
-          $sql="select idpedido,cantsol,nombregere,cedulagere,id_estado,fecha from vidaplena  where id_estado=1 group by idpedido";
+          $sql="select idpedido,SUM(cantsol),nombregere,cedulagere,id_estado,fecha from vidaplena where id_estado=1 group by idpedido";
 
 
 
