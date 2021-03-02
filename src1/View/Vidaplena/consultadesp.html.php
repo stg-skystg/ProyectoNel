@@ -48,39 +48,23 @@
                                                 <td>'.$productos['ubica'].'</td>
                                                 <td>'.$productos['cantsol'].'</td>
                                                 <td>'.$productos['cantvend'].'</td>';
-                                            
-                                                
-                                               
 
                                                  '</td>
                                                 
-                                                
-                                               
-                                                
-                                                
-                                             </tr>';
-                                    }
-                                ?>
-                                    
+                                                </tr>';
+                                                      }
+                                                  ?>
+                         
+                                                </tbody>
+                                            </table>
+                                                                    
+                                          </div>&nbsp; &nbsp; &nbsp;
+                                        
 
-                                            
-
-                                                
-                              </tbody>
-                        </table>
-                                            
-                  </div>
-               &nbsp; &nbsp; &nbsp; 
-
-               <button class="btn btn-danger">
-                Cancelar<a href="<?php echo getUrl("Vidaplena","vidaplena","listarIn"); ?>"></a></button>
-              </form>
+                                       <button class="btn btn-danger">
+                                        Cancelar<a href="<?php echo getUrl("Vidaplena","vidaplena","listarIn"); ?>"></a></button>
+                                  </form>
               
-
-              
-
-              
-                                    
                                 </div>
                             </div>
                             <!-- /.row (nested) -->

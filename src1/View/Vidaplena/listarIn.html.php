@@ -7,9 +7,7 @@
     </div>
     <!-- /.row -->
      <a href="<?php echo getUrl("Vidaplena","vidaplena","listar"); ?>"><button class="btn btn-danger">Vida Plena sin despachar</button></a>
-     <br>
-     <br>
-     <br>
+     <br><br><br> 
     <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -26,9 +24,6 @@
                                         <th  rowspan="1" colspan="1" >Nombre Gerente</th>
                                         <th  rowspan="1" colspan="1">Cedúla Gerente</th>
                                         <th  rowspan="1" colspan="1" >Fecha</th>
-                                       
-                                       
-                                        
                                         <th  rowspan="1" colspan="1">Estado</th>
                                         <th  rowspan="1" colspan="1">Consultar</th>
                                         
@@ -46,7 +41,7 @@
                                                 <td>'.$productos['fecha'].'</td>
                                              
                                                 
-                                             <td>';
+                                                  <td style="background-color:#f7b9bd">';
 
                                                if($productos['id_estado']==1){echo 'Sin Despachar';} else {echo 'DESPACHADO';}
 
@@ -56,15 +51,11 @@
                                                <td> 
                                                 <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=consultarDesp&idp='.$productos['idpedido'].'"><button class="btn btn-primary  btn-md"><i class="fa fa-search"></i></button></a> 
                                                      
-                                                </td>
-                                                
-                                                
+                                                </td>    
                                                 
                                              </tr>';
                                     }
                                 ?>
-                                    
-                                  
 
                                     </tbody>
                             </table>
@@ -72,6 +63,6 @@
                             </div>
                         </div>
                         <!-- /.panel-body -->
-                    </div>
+                </div>
         </div>
 </div>

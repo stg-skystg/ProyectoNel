@@ -1,4 +1,4 @@
- <div id="page-wrapper">
+<div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Consultar Vida Plena&nbsp<i class="fa fa-sort-amount-desc fa-fw"></i></h1>
@@ -7,9 +7,7 @@
     </div>
     <!-- /.row -->
      <a href="<?php echo getUrl("Vidaplena","vidaplena","listarIn"); ?>"><button class="btn btn-primary">Vida Plena despachada</button></a>
-     <br>
-     <br>
-     <br>
+     <br><br><br>
     <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -22,19 +20,15 @@
                                 <thead>
                                     <tr role="row">
                                         <th  rowspan="1" colspan="1" >Pedido</th>
-                                        <th  rowspan="1" colspan="1" >Cantidad Pedidos</th>
+                                        <th  rowspan="1" colspan="1" >Cantidad Unidades</th>
                                         <th  rowspan="1" colspan="1" >Nombre Gerente</th>
                                         <th  rowspan="1" colspan="1">Cedúla Gerente</th>
                                         <th  rowspan="1" colspan="1" >Fecha</th>
-                                       
-                                       
-                                        
                                         <th  rowspan="1" colspan="1">Acciones</th>
-                                        <th  rowspan="1" colspan="1">Estado</th>
-                                        
-                                        
+                                        <th  rowspan="1" colspan="1">Estado</th>     
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                 <?php
                                     foreach ($producto as $productos){  
@@ -42,44 +36,30 @@
                                                     
                                         echo '<tr class="gradeA odd" role="row" style="text-align: center;">
                                                 <td>'.$productos['idpedido'].'</td>
-                                                <td>
-                                                    '.$productos['cantsol'].' 
-                                                    
-                                                </td>
+                                                <td>'.$productos['SUM(cantsol)'].' </td>
                                                 <td>'.$productos['nombregere'].'</td>
                                                 <td>'.$productos['cedulagere'].'</td>
                                                 <td>'.$productos['fecha'].'</td>
                                              
                                                 <td> 
                                                 <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=getEditar&idpedido='.$productos['idpedido'].'"><button class="btn btn-success btn-circle btn-md"><i class="fa fa fa-check"></i></button></a>
-
-
-
-                                                     
                                                 </td>
-                                                
-                                             <td>';
+                                           
+                                             <td style="background-color:#dcf5e7">';
 
                                                if($productos['id_estado']==1){echo 'Sin Despachar';} else {echo 'SIN DESPACHAR';}
 
                                                 echo '</td>
-                                                
-                                                
-                                               
-                                                
-                                                
-                                             </tr>';
-                                    }
-                                ?>
-                                    
-                                  
 
-                                    </tbody>
+                                             </tr>';
+                                    } ?>
+
+                                </tbody>
                             </table>
                             
-                            </div>
                         </div>
+                </div>
                         <!-- /.panel-body -->
-                    </div>
-        </div>
+            </div>
+    </div>
 </div>

@@ -20,15 +20,7 @@
                                     <tr role="row">
                                         <th  rowspan="1" colspan="1" >Referencia </th>
                                         <th  rowspan="1" colspan="1" >Nombre</th>
-                                        <th  rowspan="1" colspan="1" >En Inventario</th>
-                                        <th  rowspan="1" colspan="1">Unidades Vendidas</th>
-                                
-                                       
-                                       
-                                        
-                                        
-                                       
-                                        
+                                        <th  rowspan="1" colspan="1">Unidades Despachadas</th>           
                                         
                                     </tr>
                                 </thead>
@@ -38,8 +30,8 @@
                                         echo '<tr class="gradeA odd" role="row" style="text-align: center;">
                                                 <td>'.$productos['referenc'].'</td>
                                                 <td>'.$productos['nompro'].'</td>
-                                                <td>'.$productos['inv'].'</td>
-                                                <td>'.$productos['cantvend'].'</td>
+                                                
+                                                <td>'.$productos['SUM(cantvend)'].'</td>
                                             
                                              </tr>';
 
@@ -59,8 +51,8 @@
                             </table>
                             
                             </div>
-                        </div>
+                </div>
                         <!-- /.panel-body -->
-                    </div>
         </div>
+    </div>
 </div>
