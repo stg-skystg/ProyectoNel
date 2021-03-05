@@ -1,3 +1,5 @@
+<html>
+
 <div id="page-wrapper">
       <div class="row">
           <div class="col-lg-12">
@@ -38,7 +40,7 @@
 
                                           <div class="form-group input-group" >
                                           <span class="input-group-addon" > <i class="fa  fa-barcode fa-fw"></i>  </span>
-                                          <input type="text" class="form-control"  width="100" placeholder="|||||||||||||||||||||||||||||||||||||||||||||">
+                                          <input type="text" name="CodBarras" id="CodBarras" class="form-control"  width="100" placeholder="|||||||||||||||||||||||||||||||||||||||||||||">
                                           </div>
 
                                         
@@ -94,7 +96,7 @@
 
                                                     <td> 
 
-                                                    <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="selectinput[]" id="selectinput[]" value=""  max="'.$productos['cantsol'].'" min="0">
+                                                    <input class="form-control" type="number" style="width : 60px; heigth : 1px" name="selectinput[]" id="selectinput[]" value="0"  max="'.$productos['cantsol'].'" min="0">
 
                                                     </td>
 
@@ -118,6 +120,19 @@
                                           echo ' <a href="index.php?modulo=Vidaplena&controlador=vidaplena&funcion=listar"><button class="btn btn-danger"><i class="fa  fa-times">&nbsp;&nbspCancelar&nbsp&nbsp</i></button></a>
                                                 </td>';
                                           ?>
+
+
+                                          <?php
+  function accion(){
+    echo "accion";
+  }
+  function acciondos(){
+    echo 19;
+  }
+?>
+
+<input type="submit" name="" value="Buscar" id="boton1" onclick = "funcion();">
+
                                                                   
                                   </form>  
              
@@ -127,4 +142,47 @@
               </div>
                         <!-- /.panel-body -->
 </div> 
-     
+
+<script language="JavaScript1.2">
+var barra = document.getElementById("CodBarras");
+barra.addEventListener("keyup", function(event) { 
+  if (event.keyCode === 13) {
+   event.preventDefault();
+    var a = 0;
+    var b = 0;
+    var cod;
+    var encontrador = false;
+    
+    if (barra.value != "")
+        {
+          <?php foreach ($producto as $productos): ?>
+              a++;
+              cod = <?php echo $productos['referenc'] ?> ;
+
+              b=0;
+              for (var i = 0; i < document.getElementsByName('selectinput[]').length; i++) { 
+                b++;
+
+                if (a == b && document.getElementById("CodBarras").value == cod) 
+                {
+                  encontrador = true;
+                  document.getElementsByName("selectinput[]")[i].value = Number(document.getElementsByName("selectinput[]")[i].value)+Number(1);
+                  document.getElementById("CodBarras").value = "";
+                }
+                
+              } 
+          <?php endforeach; ?>
+        }
+        else
+        {
+          alert("El campo de la serial esta vacia");
+        }
+         if(!encontrador && barra.value != "")
+        {
+          alert("no se entro el respectivo codigo");
+        }
+  }
+});
+</script>
+
+</html>
