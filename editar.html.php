@@ -65,7 +65,7 @@
                                                   <th scope="col">CantSolicitada</th>
                                                   <th scope="col">CantDespachada</th>
                                                   <th scope="col">Inventario</th>
-                                                  <th scope="col"></th>
+                                                  <th scope="col">Codigo de barras</th>
                                                   
                                                   
                                                 </tr>
@@ -154,8 +154,7 @@ barra.addEventListener("keyup", function(event) {
         {
           <?php foreach ($producto as $productos): ?>
               a++;
-              cod = <?php echo $productos['referenc'] ?> ;
-
+              cod = "<?php echo $productos['codba'] ?>" ;
               b=0;
               for (var i = 0; i < document.getElementsByName('selectinput[]').length; i++) { 
                 b++;
