@@ -40,6 +40,7 @@
 
                                           <div class="form-group input-group" >
                                           <span class="input-group-addon" > <i class="fa  fa-barcode fa-fw"></i>  </span>
+
                                           <input type="text" name="CodBarras" id="CodBarras" class="form-control"  width="100" placeholder="|||||||||||||||||||||||||||||||||||||||||||||">
                                           </div>
 
@@ -55,15 +56,16 @@
 
 
 
-                                                  <th scope="col">*</th>
+                                                  <th scope="col"></th>
                                                   <th scope="col">Codigo</th>
                                                   <th scope="col">Producto</th>
                                                   <th scope="col">Color</th>
                                                   <th scope="col">Talla</th>
                                                   <th scope="col">Ubicación</th>
-                                                  <th scope="col">CantSolicitada</th>
-                                                  <th scope="col">CantDespachada</th>
+                                                  <th scope="col">Cant. Solicitada</th>
+                                                  <th scope="col">Cant. Despachada</th>
                                                   <th scope="col">Inventario</th>
+                                                  <th scope="col">Codigo de barras</th>
                                                   
                                                   
                                                 </tr>
@@ -102,6 +104,10 @@
 
                                                     <td>'.$productos['inv'].'</td>
 
+
+                                                     <td>'.$productos['codba'].'</td>
+                                                    
+
                                                     </tr>';
                                                 }
                                                         ?>
@@ -122,16 +128,7 @@
                                           ?>
 
 
-                                          <?php
-  function accion(){
-    echo "accion";
-  }
-  function acciondos(){
-    echo 19;
-  }
-?>
-
-<input type="submit" name="" value="Buscar" id="boton1" onclick = "funcion();">
+                                          
 
                                                                   
                                   </form>  
@@ -157,7 +154,7 @@ barra.addEventListener("keyup", function(event) {
         {
           <?php foreach ($producto as $productos): ?>
               a++;
-              cod = <?php echo $productos['referenc'] ?> ;
+              cod = "<?php echo $productos['codba'] ?>" ;
 
               b=0;
               for (var i = 0; i < document.getElementsByName('selectinput[]').length; i++) { 
@@ -166,8 +163,15 @@ barra.addEventListener("keyup", function(event) {
                 if (a == b && document.getElementById("CodBarras").value == cod) 
                 {
                   encontrador = true;
-                  document.getElementsByName("selectinput[]")[i].value = Number(document.getElementsByName("selectinput[]")[i].value)+Number(1);
-                  document.getElementById("CodBarras").value = "";
+                  if (<?php echo $productos['cantsol'] ?> >= (Number(document.getElementsByName("selectinput[]")[i].value)+Number(1))) {
+                    document.getElementsByName("selectinput[]")[i].value = Number(document.getElementsByName("selectinput[]")[i].value)+Number(1);
+                    document.getElementById("CodBarras").value = "";
+                  }
+                  else
+                  {
+                    alert("No se puede superar la cantidad solicitada");
+                  }
+                  
                 }
                 
               } 
@@ -175,11 +179,11 @@ barra.addEventListener("keyup", function(event) {
         }
         else
         {
-          alert("El campo de la serial esta vacia");
+          alert("El campo  esta vacio");
         }
          if(!encontrador && barra.value != "")
         {
-          alert("no se entro el respectivo codigo");
+          alert("no se encontro la referencia");
         }
   }
 });
